@@ -1,0 +1,102 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ============================================================== -->
+<!-- Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<div class="page-breadcrumb">
+    <div class="row align-items-center">
+        <div class="col-6">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0 d-flex align-items-center">
+                    <li class="breadcrumb-item"><a href="index.html" class="link"><i
+                                class="mdi mdi-home-outline fs-4"></i></a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Starter Page</li>
+                </ol>
+            </nav>
+            <h1 class="mb-0 fw-bold">Create Email</h1>
+        </div>
+        <div class="col-6">
+            <div class="text-end upgrade-btn">
+                <a href="https://www.wrappixel.com/templates/flexy-bootstrap-admin-template/"
+                    class="btn btn-primary text-white" target="_blank">Upgrade to Pro</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Container fluid  -->
+<!-- ============================================================== -->
+<div class="container-fluid">
+    <!-- ============================================================== -->
+    <!-- Start Page Content -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+                    <!-- Include Editor style. -->
+                    <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css"
+                        rel="stylesheet" type="text/css" />
+                        <form method="POST">
+                            {% csrf_token %}
+
+
+                    <div class="input-group">
+                        <span class="input-group-text">Subject</span>
+                        <input type="text" aria-label="subject" name="subject" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="inputGroupSelect01">TO</label>
+                        <select class="form-select" id="inputGroupSelect01">
+                            <option selected>Choose List...</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                    <!-- Create a tag that we will use as the editable area. -->
+                    <!-- You can use a div tag as well. -->
+                    <textarea name="message"></textarea>
+<br>
+                    <button type="submit" class="btn btn-primary">Send Mails</button>
+</form>
+                    <!-- Include Editor JS files. -->
+                    <script type="text/javascript"
+                        src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"></script>
+
+                    <!-- Initialize the editor. -->
+                    <script>
+                        new FroalaEditor('textarea');
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End PAge Content -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Right sidebar -->
+    <!-- ============================================================== -->
+    <!-- .right-sidebar -->
+    <!-- ============================================================== -->
+    <!-- End Right sidebar -->
+    <!-- ============================================================== -->
+</div>
+
+
+{% endblock content %}
