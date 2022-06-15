@@ -29,8 +29,7 @@ def emails(request):
         subject = request.POST.get('subject')
         message = request.POST.get('message')
         # html_message = get_template(message)
-        email_list = "vimalsahuweb@gmail.com"
-        emails = ["vimalsahuweb@gmail.com", "lycostar4@gmail.com"]
+        emails = ["kushal.vstart@gmail.com", "lycostar4@gmail.com"]
         mail = SentEmails(subject=subject, message=message, emails=emails)
         mail.save()
         for i in range(len(emails)):
